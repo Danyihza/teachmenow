@@ -12,7 +12,7 @@ html {
 }
 
 .rotate {
-    animation: rotation 50s infinite;
+    animation: rotation 50s infinite linear;
 }
 
 .zoominout {
