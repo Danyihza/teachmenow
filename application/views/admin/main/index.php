@@ -342,15 +342,24 @@ $data = $this->session->userdata('data');
             },
             dataType: "text",
             success: function(response) {
-                $('#title').val('');
-                $('#heading1').val('');
-                $('#heading2').val('');
-                $('#lfticon').val('');
-                $('#lfticondsc').val('');
-                $('#rghticon').val('');
-                $('#rghticondsc').val('');
-                $('#mdlicon').val('');
-                $('#mdlicondsc').val('');
+                $('#title').val(null);
+                $('#heading1').val(null);
+                $('#heading2').val(null);
+                $('#lfticon').val(null);
+                $('#lfticondsc').val(null);
+                $('#rghticon').val(null);
+                $('#rghticondsc').val(null);
+                $('#mdlicon').val(null);
+                $('#mdlicondsc').val(null);
+                $('#title').removeAttr('value');
+                $('#heading1').removeAttr('value');
+                $('#heading2').removeAttr('value');
+                $('#lfticon').removeAttr('value');
+                $('#lfticondsc').removeAttr('value');
+                $('#rghticon').removeAttr('value');
+                $('#rghticondsc').removeAttr('value');
+                $('#mdlicon').removeAttr('value');
+                $('#mdlicondsc').removeAttr('value');
                 $('#section-data').load(" #section-data");
                 Swal.fire({
                     position: 'top-end',

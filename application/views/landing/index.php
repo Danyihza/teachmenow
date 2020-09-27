@@ -239,27 +239,79 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- BLOB -->
-                            <!-- <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="z-index: 1;right: 10px" width="60%">
-                                <path fill="#FDD100" d="M35.3,-39.9C48.1,-31.4,62.5,-22.5,65.9,-10.6C69.2,1.3,61.6,16.2,53.2,30.7C44.8,45.1,35.7,59.1,23.6,62.4C11.5,65.7,-3.5,58.4,-21.7,54.2C-39.8,49.9,-61.1,48.7,-73.7,37.4C-86.3,26.1,-90.3,4.8,-86.9,-15.5C-83.5,-35.8,-72.8,-54.9,-57.1,-62.9C-41.4,-71,-20.7,-67.9,-4.7,-62.2C11.3,-56.6,22.5,-48.4,35.3,-39.9Z" transform="translate(100 100)" />
-                              </svg>
-                            <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="z-index: 0;left: 10px;bottom:216px" width="60%">
-                                <path fill="#FDD100" d="M35.3,-39.9C48.1,-31.4,62.5,-22.5,65.9,-10.6C69.2,1.3,61.6,16.2,53.2,30.7C44.8,45.1,35.7,59.1,23.6,62.4C11.5,65.7,-3.5,58.4,-21.7,54.2C-39.8,49.9,-61.1,48.7,-73.7,37.4C-86.3,26.1,-90.3,4.8,-86.9,-15.5C-83.5,-35.8,-72.8,-54.9,-57.1,-62.9C-41.4,-71,-20.7,-67.9,-4.7,-62.2C11.3,-56.6,22.5,-48.4,35.3,-39.9Z" transform="translate(100 100)" />
-                              </svg>
-                              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="z-index: 0;left: 10px;bottom:216px" width="60%">
-                                <path fill="#00A2E9" d="M36.7,-71C44.1,-59.2,44.3,-42.5,46.1,-29.8C48,-17.1,51.5,-8.6,55.7,2.4C59.9,13.4,64.9,26.9,63.2,39.9C61.6,52.9,53.4,65.6,41.7,72.3C30.1,79,15.1,79.8,2.9,74.8C-9.3,69.8,-18.6,59,-31.3,53C-44.1,46.9,-60.3,45.5,-66.4,37.5C-72.5,29.4,-68.5,14.7,-64.6,2.2C-60.7,-10.2,-56.9,-20.5,-51.5,-29.7C-46.1,-39,-39.1,-47.3,-30.3,-58.3C-21.4,-69.3,-10.7,-82.9,2,-86.3C14.6,-89.7,29.3,-82.9,36.7,-71Z" transform="translate(100 100)" />
-                              </svg> -->
-                            <!-- END BLOB -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Shpe -->
-            <!-- <div class="features-shpae d-none d-lg-block">
-                <img src="assets/img/shape/best-features.png" alt="">
-            </div> -->
         </section>
         <!-- Best Features End -->
+
+        <?php foreach ($section as $sec) : ?>
+        <?php $modulos = $sec['id_section']%2 ?>
+            <!-- Services Area Start -->
+            <section class="service-area section-padding2 <?= $modulos == 0 ? '' : 'sky-blue' ?>">
+                <div class="container">
+                    <!-- Section Tittle -->
+                    <div class="row d-flex justify-content-center" id="about">
+                        <div class="col-lg-10">
+                            <div class="section-tittle text-center">
+                                <h1 class="mb-3 wow" style="color: #00a2e9" data-animation="fadeInUp" data-delay=".5s"><?= $sec['title']; ?></h1>
+                                <h2 class="mb-3 wow" style="font-size: 26px" data-animation="fadeInUp" data-delay=".10s"><?= $sec['content_1']; ?></h2>
+                                <p class="mb-50 wow" style="font-size: 18px" data-animation="fadeInUp" data-delay=".15s"><?= $sec['content_2']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if(
+                        $sec['content_4'] == ''  &&
+                        $sec['content_5'] == ''  &&
+                        $sec['content_6'] == ''  &&
+                        $sec['content_7'] == ''  &&
+                        $sec['content_8'] == ''  &&
+                        $sec['content_9'] == ''  &&
+                        $sec['content_10'] == ''
+                        ): ?>
+                        <?php else: ?>
+                    <!-- Section caption -->
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".25s">
+                            <div class="services-caption text-center mb-30">
+                                <div class="service-icon">
+                                    <span class="flaticon-businessman"></span>
+                                </div>
+                                <div class="service-cap">
+                                    <h4><a href="#"><?= $sec['content_3']; ?></a></h4>
+                                    <p><?= $sec['content_4']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".5s">
+                            <div class="services-caption text-center mb-30">
+                                <div class="service-icon">
+                                    <span class="flaticon-pay"></span>
+                                </div>
+                                <div class="service-cap">
+                                    <h4><a href="#"><?= $sec['content_7']; ?></a></h4>
+                                    <p><?= $sec['content_8']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".75s">
+                            <div class="services-caption text-center mb-30">
+                                <div class="service-icon">
+                                    <span class="flaticon-plane"></span>
+                                </div>
+                                <div class="service-cap">
+                                    <h4><a href="#"><?= $sec['content_5']; ?></a></h4>
+                                    <p><?= $sec['content_6']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </section>
+            <!-- Services Area End -->
+        <?php endforeach; ?>
 
         <!-- Applic App Start -->
         <div class="applic-apps section-padding2">
