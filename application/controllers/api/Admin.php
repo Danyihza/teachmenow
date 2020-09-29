@@ -16,13 +16,13 @@ class Admin extends CI_Controller
 
     public function login()
     {
-        
+
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
         $res = $this->admin->getAdmin($username);
         if ($res) {
-            if (password_verify($password,$res['password'])) {
+            if (password_verify($password, $res['password'])) {
                 $rs = [
                     'status' => '200 OK',
                     'data' => $res,
@@ -30,7 +30,7 @@ class Admin extends CI_Controller
                 ];
                 $this->session->set_userdata('data', $res);
                 echo json_encode($rs);
-            }else {
+            } else {
                 $rs = [
                     'status' => '200 OK',
                     'message' => 'Wrong Password'
@@ -60,13 +60,13 @@ class Admin extends CI_Controller
 
         $lastId = $this->admin->getLastId();
         $dataTosection = [
-            'id_section' => $lastId+1,
+            'id_section' => $lastId + 1,
             'title' => $title,
             'banner' => 'about-us.png',
-            'content' => $lastId+1
+            'content' => $lastId + 1
         ];
         $dataTocontent = [
-            'id_content' => $lastId+1,
+            'id_content' => $lastId + 1,
             'content_1' => $heading1,
             'content_2' => $heading2,
             'content_3' => $lfticon,
@@ -84,17 +84,52 @@ class Admin extends CI_Controller
 
     public function deleteData($id)
     {
-        $this->db->where('id_section',$id);
+        $this->db->where('id_section', $id);
         $this->db->delete('section');
 
-        $this->db->where('id_content',$id);
+        $this->db->where('id_content', $id);
         $this->db->delete('tb_content');
 
         $response = [
             'status' => 'success',
             'message' => "Data with id=$id has been Deleted"
         ];
-        
+
         echo json_encode($response);
+    }
+
+    public function updateData()
+    {
+        $id=$this->input->post('id');
+        $title =[
+            'title' => $this->input->post('title')
+        ]; 
+        $data = [
+            'content_1' => $this->input->post('content_1'),
+            'content_2' => $this->input->post('content_2'),
+            'content_3' => $this->input->post('content_3'),
+            'content_4' => $this->input->post('content_4'),
+            'content_5' => $this->input->post('content_5'),
+            'content_6' => $this->input->post('content_6'),
+            'content_7' => $this->input->post('content_7'),
+            'content_8' => $this->input->post('content_8'),
+            'content_9' => $this->input->post('content_9'),
+            'content_10' => $this->input->post('content_10')
+        ];
+
+        $is_there = $this->db->get_where('section', ['id_section' =>$id])->row_array();
+        if ($is_there) {
+            $this->db->where('id_section', $id);
+            $this->db->update('section', $title);
+    
+            $this->db->where('id_content', $id);
+            $this->db->update('tb_content', $data);
+    
+            echo 'Success';
+            
+        }else{
+            echo 'Failed id not found';
+        }
+
     }
 }

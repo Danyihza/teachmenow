@@ -15,6 +15,7 @@ class Admin extends CI_Controller {
 	public function index()
 	{
         $data['section'] = $this->admin->getData();
+        // var_dump($data['section']); die;
 		$this->load->view('admin/main/index', $data);
 	}
 }

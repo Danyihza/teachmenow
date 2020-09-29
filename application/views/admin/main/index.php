@@ -111,7 +111,8 @@ $data = $this->session->userdata('data');
                                     <div class="card-body">
                                     </div>
                                     <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
-                                        <a href="#" class="btn btn-warning"><i class="las la-pencil-alt" disabled></i>Edit</a>
+                                        <button data-toggle="modal" data-target="#modal<?= $s['id_section'] ?>" class="btn btn-warning"><i class="las la-pencil-alt"></i>Edit</button>
+                                        <!-- <a href="#" class="btn btn-warning"><i class="las la-pencil-alt" disabled></i>Edit</a> -->
                                         <button style="color: #ffffff; <?= $s['id_section'] <= 4 ? 'cursor: not-allowed;' : '' ?>" data-id_section="<?= $s['id_section']; ?>" class="btn btn-danger remove" <?= $s['id_section'] <= 4 ? 'disabled' : '' ?>><i class="las la-trash-alt"></i>Remove</button>
                                     </div>
                                 </div>
@@ -146,8 +147,8 @@ $data = $this->session->userdata('data');
     <!-- END CHAMELEON  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <!-- END PAGE LEVEL JS-->
-
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="<?= base_url(); ?>theme-assets/js/myscript/edit-section.js" type="text/javascript"></script>
 
     <script>
         var elem = document.documentElement;
@@ -175,7 +176,7 @@ $data = $this->session->userdata('data');
 </body>
 
 <!-- Modal Add Section-->
-<div class="modal fade" id="addsectionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999999999;">
+<div class="modal fade" id="addsectionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -201,7 +202,6 @@ $data = $this->session->userdata('data');
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -301,6 +301,213 @@ $data = $this->session->userdata('data');
         </div>
     </div>
 </div>
+
+
+<!-- Modal Edit Home -->
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit <?= $section[0]['title']; ?></h5>
+                <button type="button" class="close" id="button-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_section" value="<?= $section[0]['id_section']; ?>">
+                <section class="basic-inputs">
+                    <div class="row match-height">
+                        <div class="col-xl-12 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Title</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <input type="text" id="title_home" class="form-control" value="<?= $section[0]['title'] ?>"/>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Heading 1</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" id="heading1_home" rows="3"><?= $section[0]['content_1'] ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Heading 2</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" id="heading2_home" rows="3"><?= $section[0]['content_2'] ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Heading 3</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" id="heading3_home" rows="5"><?= $section[0]['content_3'] ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Basic Inputs end -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="button-close" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="confirm_home">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit About Us-->
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit <?= $section[1]['title']; ?></h5>
+                <button type="button" class="close" id="button-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section class="basic-inputs">
+                    <div class="row match-height">
+                        <div class="col-xl-12 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Title</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <input type="text" id="title" class="form-control" value="<?= $section[1]['title']; ?>" />
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Heading 1 (Bold)</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" id="heading1" rows="3"><?= $section[1]['content_1']; ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Heading 2</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" id="heading2" rows="3"><?= $section[1]['content_2']; ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="basic-inputs">
+                    <div class="row match-height">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Left Icon</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <input type="text" class="form-control" id="lfticon" placeholder="Title" value="<?= $section[1]['content_3']; ?>"/>
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" id="lfticondsc" rows="3" placeholder="Description"><?= $section[1]['content_4']; ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Right Icon</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <input type="text" class="form-control" id="rghticon" placeholder="Title" value="<?= $section[1]['content_5']; ?>"/>
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" rows="3" id="rghticondsc" placeholder="Description"><?= $section[1]['content_6']; ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Middle Icon</h4>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <fieldset class="form-group">
+                                            <input type="text" class="form-control" id="mdlicon" placeholder="Title" value="<?= $section[1]['content_7']; ?>"/>
+                                        </fieldset>
+                                        <fieldset class="form-group">
+                                            <textarea class="form-control" rows="3" id="mdlicondsc" placeholder="Description"><?= $section[1]['content_8']; ?></textarea>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="button-close" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
     $(document).ready(function() {

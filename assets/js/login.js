@@ -10,7 +10,7 @@ const passwordContainer = l(".password", login);
 const password = l("input", passwordContainer);
 const passwordList = l(".dots", passwordContainer);
 const submit = l("button", login);
-const URL = "https://teachmenow.biz.id/api/admin/login";
+const URL = "http://localhost/teachmenow/";
 
 password.addEventListener("input", (e) => {
 	if (password.value.length > ll("i", passwordList).length) {
@@ -62,7 +62,7 @@ login.addEventListener("submit", (e) => {
 
 		setTimeout(() => {
 			$.ajax({
-				url: URL,
+				url: URL + "api/admin/login",
 				data: {
 					username: username1,
 					password: password1,
@@ -82,7 +82,7 @@ login.addEventListener("submit", (e) => {
 							submit.disabled = true;
 						} else {
 							console.log("logged in");
-							window.location.href = "https://teachmenow.biz.id/admin/";
+							window.location.href = URL + "admin/";
 						}
 					}, 2000);
 					setTimeout(() => {
