@@ -10,7 +10,7 @@ const passwordContainer = l(".password", login);
 const password = l("input", passwordContainer);
 const passwordList = l(".dots", passwordContainer);
 const submit = l("button", login);
-const URL = "http://localhost/teachmenow/";
+const URL = "https://teachmenow.biz.id/";
 
 password.addEventListener("input", (e) => {
 	if (password.value.length > ll("i", passwordList).length) {

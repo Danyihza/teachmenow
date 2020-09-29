@@ -51,7 +51,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-2">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logonew.png" alt=""></a>
+                                <a href="<?= base_url() ?>"><img src="assets/img/logo/logonew.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -59,10 +59,9 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li class="active"><a href="#top">Home</a></li>
-                                        <li><a href="#about">About Us</a></li>
-                                        <li><a href="#feature">Features</a></li>
-                                        <li><a href="#screenshot">Screenshot</a></li>
+                                        <?php foreach ($section as $s) : ?>
+                                            <li class="<?= $s['id_section'] === '1' ? 'active' : '' ?>"><a href="#section_<?= $s['id_section'] ?>"><?= $s['title']; ?></a></li>
+                                        <?php endforeach; ?>
                                         <li><a href="#contact">Contact</a></li>
                                     </ul>
                                 </nav>
@@ -82,24 +81,21 @@
     <main>
 
         <!-- Slider Area Start-->
-        <div class="slider-area" id="top">
+        <div class="slider-area" id="section_<?= $section[0]['id_section']; ?>">
             <div class="slider-active">
                 <div class="single-slider slider-height slider-padding sky-blue d-flex align-items-center">
                     <div class="container">
                         <div class="row d-flex align-items-center">
                             <div class="col-lg-6 col-md-9 ">
                                 <div class="hero__caption">
-                                    <span data-animation="fadeInUp" data-delay=".4s">Bermain Sambil Belajar Bahasa Inggris</span>
-                                    <h1 data-animation="fadeInUp" data-delay=".6s">TEACHMENOW</h1>
-                                    <p data-animation="fadeInUp" data-delay=".8s">Aplikasi Pintar Pendampingan
-                                        Pembelajaran Bahasa Inggris untuk Anak Usia 7 – 13 Tahun yang Praktis dan
-                                        Interaktif dengan Kemampuan Mengklaster Kemampuan Pengguna Menggunakan
-                                        Artificial Intelegence
+                                    <span data-animation="fadeInUp" data-delay=".4s"><?= $section[0]['content_1']; ?></span>
+                                    <h1 data-animation="fadeInUp" data-delay=".6s"><?= $section[0]['content_2']; ?></h1>
+                                    <p data-animation="fadeInUp" data-delay=".8s"><?= $section[0]['content_3']; ?>
                                     </p>
                                     <!-- Slider btn -->
                                     <div class="slider-btns">
                                         <!-- Hero-btn -->
-                                        <a data-animation="fadeInLeft" data-delay="1.0s" href="#screenshot" class="btn radius-btn">Learn More</a>
+                                        <a data-animation="fadeInLeft" data-delay="1.0s" href="#section_4" class="btn radius-btn">Learn More</a>
                                     </div>
                                 </div>
                             </div>
@@ -123,12 +119,12 @@
         <section class="service-area section-padding2">
             <div class="container">
                 <!-- Section Tittle -->
-                <div class="row d-flex justify-content-center" id="about">
+                <div class="row d-flex justify-content-center" id="section_<?= $section[1]['id_section'] ?>">
                     <div class="col-lg-10">
                         <div class="section-tittle text-center">
-                            <h1 class="mb-3 wow" style="color: #00a2e9" data-animation="fadeInUp" data-delay=".5s">About Us</h1>
-                            <h2 class="mb-3 wow" style="font-size: 26px" data-animation="fadeInUp" data-delay=".10s">Bersama Teachmenow, belajar Bahasa Inggris lebih mudah, interaktif, dan sesuai dengan kemampuan serta gaya belajar pengguna aplikasi.</h2>
-                            <p class="mb-50 wow" style="font-size: 18px" data-animation="fadeInUp" data-delay=".15s">Teachmenow menggunakan Artificial Intelegence untuk mengklaster kemampuan pengguna menjadi 3 bagian, yaitu Basic, Intermediate, dan Advance.</p>
+                            <h1 class="mb-3 wow" style="color: #00a2e9" data-animation="fadeInUp" data-delay=".5s"><?= $section[1]['title']; ?></h1>
+                            <h2 class="mb-3 wow" style="font-size: 26px" data-animation="fadeInUp" data-delay=".10s"><?= $section[1]['content_1']; ?></h2>
+                            <p class="mb-50 wow" style="font-size: 18px" data-animation="fadeInUp" data-delay=".15s"><?= $section[1]['content_2']; ?></p>
                         </div>
                     </div>
                 </div>
@@ -140,10 +136,8 @@
                                 <span class="flaticon-businessman"></span>
                             </div>
                             <div class="service-cap">
-                                <h4><a href="#">Basic</a></h4>
-                                <p>Basic adalah kategori pembelajaran yang paling dasar. Materi basic cocok untuk para
-                                    pengguna yang baru memulai belajar Bahasa Inggris agar tidak mengalami kesulitan
-                                    sehingga masih bersifat pengenalan.</p>
+                                <h4><a href="#"><?= $section[1]['content_3']; ?></a></h4>
+                                <p><?= $section[1]['content_4']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -153,9 +147,8 @@
                                 <span class="flaticon-pay"></span>
                             </div>
                             <div class="service-cap">
-                                <h4><a href="#">Intermediate</a></h4>
-                                <p>Intermediate adalah level lanjutan apabila pengguna telah menyelesaikan level basic.
-                                    Pada level ini pengguna diajarkan materi yang lebih kompleks.</p>
+                                <h4><a href="#"><?= $section[1]['content_5']; ?></a></h4>
+                                <p><?= $section[1]['content_6']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -165,10 +158,8 @@
                                 <span class="flaticon-plane"></span>
                             </div>
                             <div class="service-cap">
-                                <h4><a href="#">Advanced</a></h4>
-                                <p>Advanced adalah tahapan terakhir dari materi pembelajaran. Pada level ini, pengguna
-                                    diajarkan materi dengan bobot yang lebih besar namun dengan cara yang tetap
-                                    interaktif.</p>
+                                <h4><a href="#"><?= $section[1]['content_7']; ?></a></h4>
+                                <p><?= $section[1]['content_8']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -180,14 +171,14 @@
         <!-- Best Features Start -->
         <section class="best-features-area section-padd4 sky-blue">
 
-            <div class="container" id="feature">
+            <div class="container" id="section_<?= $section[2]['id_section'] ?>">
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-10">
                         <!-- Section Tittle -->
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <div class="section-tittle text-center">
-                                    <h2>Mengapa Harus Teachmenow ?</h2>
+                                    <h2><?= $section[2]['content_1']; ?></h2>
                                 </div>
                             </div>
                         </div>
@@ -201,8 +192,8 @@
                                         <span><i class="fas fa-check"></i></span>
                                     </div>
                                     <div class="features-caption wow" data-animation="flipInY" data-delay="1.15s">
-                                        <h3>Praktis dan Mudah</h3>
-                                        <p>Teachmenow dapat diakses melalui smartphone. Dengan begitu pengguna dapat mengakses kapan saja dan dimana saja.</p>
+                                        <h3><?= $section[2]['content_2']; ?></h3>
+                                        <p><?= $section[2]['content_3']; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -212,8 +203,8 @@
                                         <span><i class="far fa-user"></i></span>
                                     </div>
                                     <div class="features-caption wow" data-animation="flipInY" data-delay="1.35s">
-                                        <h3>Pembelajaran sesuai kemampuan pengguna</h3>
-                                        <p>Teachmenow merupakan aplikasi yang memiliki Artificial Intellegent sehingga mampu mengkluster kemampuan penggunanya menjadi tiga tingkatan pembelajaran agar materi lebih mudah untuk dipahami.</p>
+                                        <h3><?= $section[2]['content_4']; ?></h3>
+                                        <p><?= $section[2]['content_5']; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -223,8 +214,8 @@
                                         <span class="flaticon-ebook-1"></span>
                                     </div>
                                     <div class="features-caption wow" data-animation="flipInY" data-delay="1.55s">
-                                        <h3>Cerita yang Menarik</h3>
-                                        <p>Teachmenow hadir dengan membawa keanekaragaman cerita yang pastinya tidak membuat bosan dengan gambar yang atraktif dan bervariatif.</p>
+                                        <h3><?= $section[2]['content_6']; ?></h3>
+                                        <p><?= $section[2]['content_7']; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -234,8 +225,8 @@
                                         <span class="flaticon-exam"></span>
                                     </div>
                                     <div class="features-caption wow" data-animation="flipInY" data-delay="1.75s">
-                                        <h3>Pembelajaran sesuai gaya belajar pengguna</h3>
-                                        <p>Teachmenow hadir dengan membawa dua metode pembelajaran, yaitu visual dan auditori. Sehingga adaptif dengan gaya belajar pengguna.</p>
+                                        <h3><?= $section[2]['content_8']; ?></h3>
+                                        <p><?= $section[2]['content_9']; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -246,82 +237,17 @@
         </section>
         <!-- Best Features End -->
 
-        <?php foreach ($section as $sec) : ?>
-        <?php $modulos = $sec['id_section']%2 ?>
-            <!-- Services Area Start -->
-            <section class="service-area section-padding2 <?= $modulos == 0 ? '' : 'sky-blue' ?>">
-                <div class="container">
-                    <!-- Section Tittle -->
-                    <div class="row d-flex justify-content-center" id="about">
-                        <div class="col-lg-10">
-                            <div class="section-tittle text-center">
-                                <h1 class="mb-3 wow" style="color: #00a2e9" data-animation="fadeInUp" data-delay=".5s"><?= $sec['title']; ?></h1>
-                                <h2 class="mb-3 wow" style="font-size: 26px" data-animation="fadeInUp" data-delay=".10s"><?= $sec['content_1']; ?></h2>
-                                <p class="mb-50 wow" style="font-size: 18px" data-animation="fadeInUp" data-delay=".15s"><?= $sec['content_2']; ?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php if(
-                        $sec['content_4'] == ''  &&
-                        $sec['content_5'] == ''  &&
-                        $sec['content_6'] == ''  &&
-                        $sec['content_7'] == ''  &&
-                        $sec['content_8'] == ''  &&
-                        $sec['content_9'] == ''  &&
-                        $sec['content_10'] == ''
-                        ): ?>
-                        <?php else: ?>
-                    <!-- Section caption -->
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".25s">
-                            <div class="services-caption text-center mb-30">
-                                <div class="service-icon">
-                                    <span class="flaticon-businessman"></span>
-                                </div>
-                                <div class="service-cap">
-                                    <h4><a href="#"><?= $sec['content_3']; ?></a></h4>
-                                    <p><?= $sec['content_4']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".5s">
-                            <div class="services-caption text-center mb-30">
-                                <div class="service-icon">
-                                    <span class="flaticon-pay"></span>
-                                </div>
-                                <div class="service-cap">
-                                    <h4><a href="#"><?= $sec['content_7']; ?></a></h4>
-                                    <p><?= $sec['content_8']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".75s">
-                            <div class="services-caption text-center mb-30">
-                                <div class="service-icon">
-                                    <span class="flaticon-plane"></span>
-                                </div>
-                                <div class="service-cap">
-                                    <h4><a href="#"><?= $sec['content_5']; ?></a></h4>
-                                    <p><?= $sec['content_6']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-                </div>
-            </section>
-            <!-- Services Area End -->
-        <?php endforeach; ?>
+
 
         <!-- Applic App Start -->
         <div class="applic-apps section-padding2">
-            <div class="container-fluid" id="screenshot">
+            <div class="container-fluid" id="section_<?= $section[3]['id_section'] ?>">
                 <div class="row justify-content-center">
                     <!-- slider Heading -->
                     <div class="col-xl-4 col-lg-4 col-md-8">
                         <div class="single-cases-info mb-30">
-                            <h3>In-App<br> Screenshot</h3>
-                            <p>Teachmenow didesain tengan tampilan aplikasi yang menarik dan atraktif.</p>
+                            <h3><?= $section[3]['content_1']; ?></h3>
+                            <p><?= $section[3]['content_2']; ?></p>
                         </div>
                     </div>
                     <!-- OwL -->
@@ -346,19 +272,90 @@
         </div>
         <!-- Applic App End -->
 
+
+        <?php foreach ($section as $sec) : ?>
+            <?php if ($sec['id_section'] > 4) : ?>
+                <?php $modulos = $sec['id_section'] % 2 ?>
+                <!-- Services Area Start -->
+                <section class="service-area section-padding2 <?= $modulos == 0 ? '' : 'sky-blue' ?>" id="section_<?= $s['id_section'] ?>">
+                    <div class="container">
+                        <!-- Section Tittle -->
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="section-tittle text-center">
+                                    <h1 class="mb-3 wow" style="color: #00a2e9" data-animation="fadeInUp" data-delay=".5s"><?= $sec['title']; ?></h1>
+                                    <h2 class="mb-3 wow" style="font-size: 26px" data-animation="fadeInUp" data-delay=".10s"><?= $sec['content_1']; ?></h2>
+                                    <p class="mb-50 wow" style="font-size: 18px" data-animation="fadeInUp" data-delay=".15s"><?= $sec['content_2']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if (
+                            $sec['content_4'] == ''  &&
+                            $sec['content_5'] == ''  &&
+                            $sec['content_6'] == ''  &&
+                            $sec['content_7'] == ''  &&
+                            $sec['content_8'] == ''  &&
+                            $sec['content_9'] == ''  &&
+                            $sec['content_10'] == ''
+                        ) : ?>
+                        <?php else : ?>
+                            <!-- Section caption -->
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".25s">
+                                    <div class="services-caption text-center mb-30">
+                                        <div class="service-icon">
+                                            <span class="flaticon-businessman"></span>
+                                        </div>
+                                        <div class="service-cap">
+                                            <h4><a href="#"><?= $sec['content_3']; ?></a></h4>
+                                            <p><?= $sec['content_4']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".5s">
+                                    <div class="services-caption text-center mb-30">
+                                        <div class="service-icon">
+                                            <span class="flaticon-pay"></span>
+                                        </div>
+                                        <div class="service-cap">
+                                            <h4><a href="#"><?= $sec['content_7']; ?></a></h4>
+                                            <p><?= $sec['content_8']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-6 wow" data-animation="fadeInUp" data-delay=".75s">
+                                    <div class="services-caption text-center mb-30">
+                                        <div class="service-icon">
+                                            <span class="flaticon-plane"></span>
+                                        </div>
+                                        <div class="service-cap">
+                                            <h4><a href="#"><?= $sec['content_5']; ?></a></h4>
+                                            <p><?= $sec['content_6']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </section>
+                <!-- Services Area End -->
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+
     </main>
     <footer>
 
         <!-- Footer Start-->
         <div class="footer-main sky-blue">
-            <div class="footer-area footer-padding">
-                <div class="container" id="contact">
+            <div class="footer-area footer-padding" id="contact">
+                <div class="container">
                     <div class="row  justify-content-left">
                         <div class="col-lg-3 col-md-4 col-sm-8">
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logonew.png" alt=""></a>
+                                    <a href="<?= base_url(); ?>"><img src="assets/img/logo/logonew.png" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -368,15 +365,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-2 col-md-4 col-sm-7">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Social Media</h4>
+                                    <ul>
+                                        <li><a href="https://instagram.com/teachmenow_?igshid=1advhi5eaivfz">Instagram</a></li>
+                                        <li><a href="https://wa.me/6285755511371">WhatsApp</a></li>
+                                        <li><a href="https://www.youtube.com/channel/UCp277FpQzuGB_5Ra_j57kkw/videos?view_as=subscriber">YouTube</a></li>
+                                        <li><a style="cursor:default">Line: @329ilfzz</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-2 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
                                     <h4>Quick Links</h4>
                                     <ul id="navigation">
+                                        <?php foreach ($section as $s) : ?>
+                                            <li><a href="#section_<?= $s['id_section'] ?>"><?= $s['title']; ?></a></li>
+                                        <?php endforeach; ?>
+                                        <!-- <li><a href="#contact">Contact</a></li>
                                         <li><a href="#top">Home</a></li>
                                         <li><a href="#about">About Us</a></li>
                                         <li><a href="#feature">Features</a></li>
-                                        <li><a href="#screenshot">Screenshot</a></li>
+                                        <li><a href="#screenshot">Screenshot</a></li> -->
                                         <li><a href="#contact">Contact</a></li>
                                     </ul>
                                 </div>
